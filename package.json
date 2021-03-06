@@ -11,5 +11,9 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/wilcoxr3/WoodleyStudios.git"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "gulp": "^4.0.2"
     }
 }
