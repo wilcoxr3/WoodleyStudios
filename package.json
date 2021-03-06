@@ -1,10 +1,10 @@
 {
     "name": "woodleystudios",
-    "description": "Simple Hello World Node.js sample for Azure App Service",
+    "description": "Start of Woodley Studios",
     "version": "0.0.1",
     "private": false,
     "license": "MIT",
-    "author": "Microsoft",
+    "author": "Ryan Wilcox",
     "scripts": {
         "start": "node index.js"
     }
