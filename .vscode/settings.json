@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/aad767fb-04fc-46f6-b4bb-278015da14f4/resourceGroups/WoodleyStudios-rg/providers/Microsoft.Web/sites/WoodleyStudios",
+    "appService.deploySubpath": "."
+}
