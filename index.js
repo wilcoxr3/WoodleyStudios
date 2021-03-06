@@ -1,63 +1,55 @@
-const http = require('http');
 const express = require('express');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var fs = require('fs');
+
 const app = express();
-const url = require('url');
-const https = require('https');
-const mongoclient = require('mongodb').MongoClient; //database
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
+app.use(cookieParser());
 
-/* const server = http.createServer((request, response) => {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello World!");
-}); */
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/index.html'));
-  });
-   
-  app.post('/', (req, res) => {
-    return res.send('Received a POST HTTP method');
-  });
-   
-  app.put('/', (req, res) => {
-    return res.send('Received a PUT HTTP method');
-  });
-   
-  app.delete('/', (req, res) => {
-    return res.send('Received a DELETE HTTP method');
-  });
-//USERS
-app.get('/users', (req, res) => {
-    return res.send(Object.values(users));
-  });
-   
-  app.post('/users', (req, res) => {
-    return res.send('POST HTTP method on user resource');
-  });
-   
-  app.put('/users/:userId', (req, res) => {
-    return res.send(users[req.params.userId]);
-  });
-   
-  app.delete('/users/:userId', (req, res) => {
-    return res.send(
-      `DELETE HTTP method on user/${req.params.userId} resource`,
-    );
-  });
-  let users = {
-    1: {
-      id: '1',
-      username: 'Ryan Wilcox',
-    },
-    2: {
-      id: '2',
-      username: 'Dave Davids',
-    },
+app.get('/', function(req, res) {
+  console.log("Cookies: ", req.cookies)
+})
+
+app.get('/index.htm', function (req, res) {
+  res.sendFile( __dirname + "/" + "index.htm" );
+})
+
+app.get('/process_get', function (req, res) {
+  // Prepare output in JSON format
+  response = {
+     first_name:req.query.first_name,
+     last_name:req.query.last_name
   };
-const port = process.env.PORT || 4000;
-app.listen(port, function(){
-    initialize();
-    console.log("listening on port 4000")
-});
+  console.log(response);
+  res.end(JSON.stringify(response));
+})
 
-console.log("Server running at http://localhost:%d", port);
+// This responds a POST request for the homepage
+app.post('/', function (req, res) {
+  console.log("Got a POST request for the homepage");
+  res.send('Hello POST');
+})
+
+// This responds a DELETE request for the /del_user page.
+app.delete('/del_user', function (req, res) {
+  console.log("Got a DELETE request for /del_user");
+  res.send('Hello DELETE');
+})
+
+// This responds a GET request for the /list_user page.
+app.get('/list_user', function (req, res) {
+  console.log("Got a GET request for /list_user");
+  res.send('Page Listing');
+})
+
+var server = app.listen(8081, function () {
+  var host = server.address().address
+  var port = server.address().port
+  
+  console.log("Example app listening on port " + port);
+})
 
 
