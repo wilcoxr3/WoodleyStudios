@@ -10,7 +10,7 @@ app.use(express.static('public'));
 app.use(cookieParser());
 
 app.get('/', function(req, res) {
-  console.log("Cookies: ", req.cookies)
+  res.sendFile( __dirname + "/" + "index.htm" );
 })
 
 app.get('/index.htm', function (req, res) {
