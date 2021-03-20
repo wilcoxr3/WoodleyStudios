@@ -2,7 +2,6 @@ const express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
-var fs = require('fs');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,7 +45,6 @@ app.get('/list_user', function (req, res) {
 })
 
 var server = app.listen(8081, function () {
-  var host = server.address().address
   var port = server.address().port
   
   console.log("Example app listening on port " + port);
