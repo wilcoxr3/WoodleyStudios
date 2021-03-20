@@ -18,10 +18,10 @@
       <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
     </div>
     
-    <form action = "http://127.0.0.1:8081/process_get" method = "GET">
-      First Name: <input type = "text" name = "first_name">  <br>
-      Last Name: <input type = "text" name = "last_name">
-      <input type = "submit" value = "Submit">
+    <form method="POST" action="/submit-form">
+      username: <input type = "text" name = "username">  <br>
+      password: <input type = "text" name = "password">
+      <input type = "submit" />
    </form>
   
   </main>

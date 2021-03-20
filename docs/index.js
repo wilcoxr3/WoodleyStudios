@@ -4,16 +4,21 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 
 const app = express();
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(cookieParser());
 
 app.get('/', function(req, res) {
-  res.sendFile( __dirname + "/" + "index.htm" );
+  res.redirect('public/index.html')
 })
 
-app.get('/index.htm', function (req, res) {
-  res.sendFile( __dirname + "/" + "index.htm" );
+app.post('/submit-form', (req, res) => {
+  const username = req.body.username
+  const password = req.body.password
+  res.redirect('public/home.html')
+  res.end()
 })
 
 app.get('/process_get', function (req, res) {
@@ -44,7 +49,7 @@ app.get('/list_user', function (req, res) {
   res.send('Page Listing');
 })
 
-var server = app.listen(8081, function () {
+var server = app.listen(5500, function () {
   var port = server.address().port
   
   console.log("Example app listening on port " + port);
