@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link rel="stylesheet" href="loginstyle.css">
-  <script src="index.js"></script>
+  <script src="../index.js"></script>
   <script defer src="login.js"></script>
 </head>
 
@@ -18,7 +18,7 @@
       <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
     </div>
     
-    <form method="POST" action="/submit-form">
+    <form method="GET" action="/submit-form">
       username: <input type = "text" name = "username">  <br>
       password: <input type = "text" name = "password">
       <input type = "submit" />

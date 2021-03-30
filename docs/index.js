@@ -4,21 +4,19 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 
 const app = express();
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(cookieParser());
 
 app.get('/', function(req, res) {
-  res.redirect('public/index.html')
+  res.sendFile('index.html', {
+    root: path.join(__dirname, './public/')
+})
 })
 
-app.post('/submit-form', (req, res) => {
-  const username = req.body.username
-  const password = req.body.password
-  res.redirect('public/home.html')
-  res.end()
+app.get('/submit-form', (req, res) => {
+  res.sendFile(html_dir + '/public/index.html');
 })
 
 app.get('/process_get', function (req, res) {
